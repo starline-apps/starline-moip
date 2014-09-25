@@ -1,0 +1,17 @@
+{
+    "name"         : "starline-moip",
+    "version"      : "0.0.0",
+    "description"  : "Starline App for MOIP Integration.",
+    "main"         : "server.js",
+    "author"       : "Thiago Kroger",
+    "dependencies" : {
+        "express": "~4.0.0",
+        "express-load": "*",
+        "body-parser": "~1.0.1",
+        "cookie-parser": "~1.0.1",
+        "morgan": "~1.0.1",
+        "method-override": "~1.0.0",
+        "express-cors"  : "*",
+        "aws-sdk" : "*"
+    }
+}
