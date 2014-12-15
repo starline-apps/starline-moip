@@ -21,7 +21,6 @@ app.use(cors({
 
 var port = process.env.PORT || 1313; 		// set our port// load the config
 
-var database = require('./config/database');
 
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)

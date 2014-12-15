@@ -56,6 +56,59 @@ module.exports = {
             else     res.json(data);           // successful response
         });
     },
+  getActiveUsers : function(req, res, next){
+    var arr = [];
+    var lastWritten, interval;
+    var now = Math.round(+new Date()/1000);
+    dynamodb.scan({
+      TableName : 'Users'
+    }, function(err, data) {
+      if (err) { console.log(err); return; }
+
+
+      interval = 2628000;
+      console.log( (now - interval));
+      for (var ii in data.Items) {
+
+        lastWritten = parseInt(data.Items[ii].LastWritten.N);
+
+        if (lastWritten > (now - interval)){
+
+          arr.push(data.Items[ii]);
+        }
+
+
+      }
+      res.json(arr);
+    });
+  },
+  getActiveUsersLength : function(req, res, next){
+    var arr = [];
+    var lastWritten, interval;
+    var now = Math.round(+new Date()/1000);
+    dynamodb.scan({
+      TableName : 'Users'
+    }, function(err, data) {
+      if (err) { console.log(err); return; }
+      var ctAll = 0;
+      var ct = 0;
+      interval = 2628000;
+      console.log( (now - interval));
+      for (var ii in data.Items) {
+
+        lastWritten = parseInt(data.Items[ii].LastWritten.N);
+        ctAll++;
+        if (lastWritten > (now - interval)){
+
+          arr.push(data.Items[ii]);
+          ct++;
+        }
+
+
+      }
+      res.json({all:ctAll, active:ct});
+    });
+  },
     update3s: function (req, res, next) {
 
 
