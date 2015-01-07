@@ -185,6 +185,9 @@ module.exports = {
                 console.log("Error: " + error);
             }
 
+            template.title.text = "Downloads Mensais Apple Store";
+            template.series[0].name = "Quantidade de Downloads";
+
             for (var key in storage){
                 template.series[0].data.push(storage[key]);
                 template.xAxis.categories.push(key);
