@@ -120,7 +120,7 @@ module.exports = {
 
 
             }
-            res.json({all:ctAll, active:ct});
+            res.json({max:{value:ctAll}, min:{value:0} ,item:ct});
         });
     },
     getAppleIngestionMonthly: function (req, res, next) {
